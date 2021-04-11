@@ -15,7 +15,7 @@ public class Product {
 	
 	private double price;
 	
-	private boolean offerApplied;
+	private Boolean offerApplied;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -42,6 +42,10 @@ public class Product {
 		return result;
 	}
 	
-	
+	public Product product(Product product) {
+		return Product.builder().productCode(product.getProductCode()).productName(product.getProductName())
+				.quantity(product.getQuantity()).price(product.getPrice()).offerApplied(product.getOfferApplied())
+				.build();
+	}
 
 }

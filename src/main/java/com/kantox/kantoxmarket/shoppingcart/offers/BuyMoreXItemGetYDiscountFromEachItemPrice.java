@@ -9,20 +9,17 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class BuyMoreXItemGetYPercentDiscountEachProduct implements IOffer {
-
-	private double Y;
+public class BuyMoreXItemGetYDiscountFromEachItemPrice implements IOffer {
 
 	private int XItem;
 
 	@Override
 	public void applyOffer(Product product) {
 		int totalQuantity = product.getQuantity();
-		double unitPrice = product.getPrice() / product.getQuantity();
-		while (totalQuantity >= XItem) {
+		if (totalQuantity >= XItem) {
 			double price = product.getPrice();
-			product.setPrice(price - totalQuantity * (unitPrice / (100 / Y)));
-			totalQuantity = totalQuantity - 2;
+			double priceAfterDiscount = Math.round(((price / 3 * 2) * 100.0)) / 100.0;
+			product.setPrice(priceAfterDiscount);
 		}
 
 	}
