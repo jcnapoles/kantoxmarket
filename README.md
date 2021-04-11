@@ -6,7 +6,7 @@ Simple app that simulates shopping cart
 - Buy more than X item get Y percent discount on each product
 - Buy More than X item get Y discount from the original price of product 
 
-# Registred Products
+# Registered Products
 - GR1 Green tea £3.11
 - SR1 Strawberries £5.00
 - CF1 Coffee £11.23
