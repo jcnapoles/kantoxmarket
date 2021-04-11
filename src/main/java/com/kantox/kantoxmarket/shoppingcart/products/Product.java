@@ -6,15 +6,15 @@ import lombok.Data;
 @Data
 @Builder
 public class Product {
-	
+
 	private String productCode;
-	
+
 	private String productName;
-	
+
 	private int quantity;
-	
+
 	private double price;
-	
+
 	private Boolean offerApplied;
 
 	@Override
@@ -41,7 +41,7 @@ public class Product {
 		result = prime * result + ((productCode == null) ? 0 : productCode.hashCode());
 		return result;
 	}
-	
+
 	public Product product(Product product) {
 		return Product.builder().productCode(product.getProductCode()).productName(product.getProductName())
 				.quantity(product.getQuantity()).price(product.getPrice()).offerApplied(product.getOfferApplied())

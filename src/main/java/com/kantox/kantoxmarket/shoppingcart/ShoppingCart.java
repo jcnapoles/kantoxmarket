@@ -138,7 +138,7 @@ public class ShoppingCart {
 	}
 
 	public void addProductsByArrayCode(String[] basket) {
-		Arrays.asList(basket).forEach(productCode ->{
+		Arrays.asList(basket).forEach(productCode -> {
 			addProductByCode(productCode);
 		});
 

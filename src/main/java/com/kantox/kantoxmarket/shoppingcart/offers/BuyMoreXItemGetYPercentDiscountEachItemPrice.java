@@ -21,7 +21,7 @@ public class BuyMoreXItemGetYPercentDiscountEachItemPrice implements IOffer {
 		double unitPrice = product.getPrice() / product.getQuantity();
 		while (totalQuantity >= XItem) {
 			double price = product.getPrice();
-			product.setPrice(Math.round((price - totalQuantity * (unitPrice / (100 / Y)))*100.0)/100.0);
+			product.setPrice(Math.round((price - totalQuantity * (unitPrice / (100 / Y))) * 100.0) / 100.0);
 			totalQuantity = totalQuantity - 2;
 		}
 

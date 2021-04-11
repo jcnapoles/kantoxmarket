@@ -55,23 +55,23 @@ public class InMemoryInventory implements Inventory {
 
 	@Override
 	public Product productRegister(Product product) {
-		
+
 		if (0 == product.getQuantity() && 0 == product.getPrice()) {
-			
-		}else {
-			if(product.getQuantity() > 1) {				
+
+		} else {
+			if (product.getQuantity() > 1) {
 				double price = product.getPrice();
 				int quantity = product.getQuantity();
 				Product newProduct = Product.builder().build().product(product);
 				newProduct.setQuantity(1);
-				newProduct.setPrice(price/quantity);
+				newProduct.setPrice(price / quantity);
 				inventory.put(newProduct.getProductCode(), newProduct);
-				
-			}else {
+
+			} else {
 				inventory.put(product.getProductCode(), product);
-				
+
 			}
-			
+
 		}
 		return product;
 	}

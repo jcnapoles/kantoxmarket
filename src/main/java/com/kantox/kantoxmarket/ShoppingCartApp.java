@@ -12,29 +12,29 @@ import com.kantox.kantoxmarket.shoppingcart.service.InMemoryInventory;
 import com.kantox.kantoxmarket.shoppingcart.service.Inventory;
 
 public class ShoppingCartApp {
-	
+
 	private static ShoppingCart basket;
-	
-	public static void main(String[] args) {		
+
+	public static void main(String[] args) {
 		initInventory();
-		printWelcome();		
-		Scanner keyboard = new Scanner(System.in);	
-		System.out.println("Do you want to register a new product?: (Y/N)");		
-		String answerRegister = keyboard.nextLine(); 
-		while(answerRegister.equalsIgnoreCase("Y")) {
+		printWelcome();
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Do you want to register a new product?: (Y/N)");
+		String answerRegister = keyboard.nextLine();
+		while (answerRegister.equalsIgnoreCase("Y")) {
 			registerNewProduct();
 			System.out.println("Do you want to register a new product?: (Y/N)");
-			answerRegister = keyboard.nextLine(); 
+			answerRegister = keyboard.nextLine();
 		}
 		System.out.println("You can start scanning products");
-		String productCode = keyboard.nextLine();	
-		double total = checkout(productCode);		
+		String productCode = keyboard.nextLine();
+		double total = checkout(productCode);
 		System.out.println("*******The total price of the basket is: " + "£" + total + "  *****");
 		System.out.println("Do you want to scan another product?: (Y/N)");
 		String answerNewProduct = keyboard.nextLine();
-		while(answerNewProduct.equalsIgnoreCase("Y")) {
-			productCode = keyboard.nextLine();			
-			total = checkout(productCode);			
+		while (answerNewProduct.equalsIgnoreCase("Y")) {
+			productCode = keyboard.nextLine();
+			total = checkout(productCode);
 			System.out.println("*******The total price of the basket is: " + "£" + total + "  *****");
 			System.out.println("Do you want to scan another product?: (Y/N)");
 			answerNewProduct = keyboard.nextLine();
@@ -44,23 +44,23 @@ public class ShoppingCartApp {
 		System.exit(0);
 	}
 
-	private static double checkout(String productCode) {		
-		basket.addProductByCode(productCode);		
+	public static double checkout(String productCode) {
+		basket.addProductByCode(productCode);
 		return basket.checkout();
-		
+
 	}
 
-	private static void registerNewProduct() {
-		/*To implement*/
+	public static void registerNewProduct() {
+		/* To implement */
 		System.out.println("Function not implemented");
 	}
 
-	private static void printWelcome() {
+	public static void printWelcome() {
 		System.out.println("Welcome to KANTOXMARKET");
-		
+
 	}
 
-	private static void initInventory() {
+	public static void initInventory() {
 		IOffer offerGR1 = BuyXItemGetYItemFreeOffer.builder().XItem(2).YItem(1).build();
 		IOffer offerSR1 = BuyMoreXItemGetYPercentDiscountEachItemPrice.builder().XItem(3).Y(10.0).build();
 		IOffer offerCF1 = BuyMoreXItemGetYDiscountFromEachItemPrice.builder().XItem(3).build();
@@ -70,7 +70,7 @@ public class ShoppingCartApp {
 		Product SR1 = Product.builder().productCode("SR1").productName("Strawberries").price(5.00).quantity(1)
 				.offerApplied(null).build();
 		Product CF1 = Product.builder().productCode("CF1").productName("Coffee").price(11.23).quantity(1)
-				.offerApplied(null).build();		
+				.offerApplied(null).build();
 		basket = ShoppingCart.builder().inventory(inventory).build();
 		inventory.add(GR1);
 		inventory.add(SR1);
@@ -78,8 +78,7 @@ public class ShoppingCartApp {
 		basket.addOffer(offerGR1, "GR1");
 		basket.addOffer(offerSR1, "SR1");
 		basket.addOffer(offerCF1, "CF1");
-		
+
 	}
 
-	
 }
